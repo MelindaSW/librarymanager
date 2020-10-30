@@ -12,8 +12,6 @@ C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcor
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.csprojAssemblyReference.cache
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.AssemblyInfoInputs.cache
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.AssemblyInfo.cs
-C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.csproj.CoreCompileInputs.cache
-C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.RazorAssemblyInfo.cache
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.RazorAssemblyInfo.cs
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.TagHelpers.input.cache
@@ -35,3 +33,10 @@ C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcor
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.pdb
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.genruntimeconfig.cache
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.csproj.CopyComplete
+C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.csproj.CoreCompileInputs.cache
+C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.MvcApplicationPartsAssemblyInfo.cache
