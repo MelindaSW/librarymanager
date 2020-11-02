@@ -10,85 +10,85 @@ using LibraryManager.Models;
 
 namespace LibraryManager.Controllers
 {
-    public class EmployeesController : Controller
+    public class CategoriesController : Controller
     {
         private readonly LibraryManagerContext _context;
 
-        public EmployeesController(LibraryManagerContext context)
+        public CategoriesController(LibraryManagerContext context)
         {
             _context = context;
         }
 
-        // GET: Employees
+        // GET: Categories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Employees.ToListAsync());
+            return View(await _context.Category.ToListAsync());
         }
 
-        // GET: Employees/Details/5
-        public async Task<IActionResult> Details(long? id)
+        // GET: Categories/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var employee = await _context.Employees
+            var category = await _context.Category
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (employee == null)
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(category);
         }
 
-        // GET: Employees/Create
+        // GET: Categories/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Employees/Create
+        // POST: Categories/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,Lastname,Salary,IsCEO,IsManager,ManagerId")] Employee employee)
+        public async Task<IActionResult> Create([Bind("Id,CategoryName")] Category category)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(employee);
+                _context.Add(category);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            return View(category);
         }
 
-        // GET: Employees/Edit/5
-        public async Task<IActionResult> Edit(long? id)
+        // GET: Categories/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var employee = await _context.Employees.FindAsync(id);
-            if (employee == null)
+            var category = await _context.Category.FindAsync(id);
+            if (category == null)
             {
                 return NotFound();
             }
-            return View(employee);
+            return View(category);
         }
 
-        // POST: Employees/Edit/5
+        // POST: Categories/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,FirstName,Lastname,Salary,IsCEO,IsManager,ManagerId")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,CategoryName")] Category category)
         {
-            if (id != employee.Id)
+            if (id != category.Id)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace LibraryManager.Controllers
             {
                 try
                 {
-                    _context.Update(employee);
+                    _context.Update(category);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeeExists(employee.Id))
+                    if (!CategoryExists(category.Id))
                     {
                         return NotFound();
                     }
@@ -113,41 +113,41 @@ namespace LibraryManager.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(employee);
+            return View(category);
         }
 
-        // GET: Employees/Delete/5
-        public async Task<IActionResult> Delete(long? id)
+        // GET: Categories/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var employee = await _context.Employees
+            var category = await _context.Category
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (employee == null)
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(category);
         }
 
-        // POST: Employees/Delete/5
+        // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(long id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var employee = await _context.Employees.FindAsync(id);
-            _context.Employees.Remove(employee);
+            var category = await _context.Category.FindAsync(id);
+            _context.Category.Remove(category);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EmployeeExists(long id)
+        private bool CategoryExists(int id)
         {
-            return _context.Employees.Any(e => e.Id == id);
+            return _context.Category.Any(e => e.Id == id);
         }
     }
 }

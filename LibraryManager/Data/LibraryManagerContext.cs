@@ -12,7 +12,14 @@ namespace LibraryManager.Data
         public LibraryManagerContext(DbContextOptions<LibraryManagerContext> options) : base(options)
         {
         }
-        // Add entity sets for the tables here
-        public DbSet<Employee> Employee { get; set; }
+
+        public DbSet<LibraryItem> LibraryItem { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Category> Category { get; set; }
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            
+        }
     }
 }
