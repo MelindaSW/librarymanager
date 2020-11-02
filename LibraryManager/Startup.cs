@@ -11,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Reflection;
 using System.IO;
+using LibraryManager.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 namespace LibraryManager
@@ -28,6 +30,9 @@ namespace LibraryManager
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<LibraryManagerContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("LibraryManagerContext")));
+           
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {

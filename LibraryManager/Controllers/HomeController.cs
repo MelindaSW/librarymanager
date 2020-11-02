@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -26,6 +27,16 @@ namespace LibraryManager.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        //public string Welcome()
+        //{
+        //    return "This is the Welcome action method...";
+        //}
+
+        public string Welcome(string name, int ID = 1)
+        {
+            return HtmlEncoder.Default.Encode($"Hello {name}, ID: {ID}");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
