@@ -11,6 +11,8 @@ using Microsoft.Extensions.Hosting;
 using System.Reflection;
 using System.IO;
 using LibraryManager.Data;
+using LibraryManager.Repos;
+using LibraryManager.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -31,7 +33,11 @@ namespace LibraryManager
             services.AddControllersWithViews();
             services.AddDbContext<LibraryManagerContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("LibraryManagerContext")));
-           
+
+            // Register services for dependency injection
+            services.AddTransient<ILibraryItemService, LibraryItemServiceImpl>();
+            services.AddTransient<ILibraryItemRepo, LibraryItemRepoImpl>();
+
             // Register the Swagger generator, defining 1 or more Swagger documents TODO: this might not be needed if going for mvc controllers instead of rest controllers
             services.AddSwaggerGen(c =>
             {

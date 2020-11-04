@@ -17,6 +17,7 @@ namespace LibraryManager
         {
             var host = CreateHostBuilder(args).Build();
 
+            // Seed initial data for demonstration and manual testing
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;

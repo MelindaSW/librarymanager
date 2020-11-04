@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,15 +10,29 @@ namespace LibraryManager.Services
 {
     public class LibraryItemServiceImpl : ILibraryItemService
     {
-        private readonly LibraryItemRepo _repo;
-        public LibraryItemServiceImpl(LibraryItemRepo repo)
+        private readonly ILibraryItemRepo _repo;
+
+        public LibraryItemServiceImpl(ILibraryItemRepo repo)
         {
             _repo = repo;
         }
 
-        public List<LibraryItem> GetAllLibraryItems()
+        public async Task<List<LibraryItem>> GetAllLibraryItems()
         {
-            throw new NotImplementedException();
+            var libraryItems = await _repo.GetAllLibraryItems();
+            // For every title in the list concat the title with its acronym
+            foreach (var item in libraryItems)
+            {
+                item.Title = string.Concat(item.Title, " (" + GetAcronym(item.Title) + ") ");
+            }
+            return libraryItems;
+        }
+
+
+        private string GetAcronym(string s)
+        {
+            var splitString = s.Split(" ");
+            return splitString.Aggregate("", (current, word) => current + char.ToUpper(word[0]));
         }
     }
 }

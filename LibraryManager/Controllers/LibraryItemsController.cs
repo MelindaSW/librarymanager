@@ -14,21 +14,21 @@ namespace LibraryManager.Controllers
     public class LibraryItemsController : Controller
     {
         private readonly LibraryManagerContext _context;
-        //private readonly ILibraryItemService _service;
+        private readonly ILibraryItemService _service;
 
-        public LibraryItemsController(LibraryManagerContext context /*ILibraryItemService service*/)
+        public LibraryItemsController(LibraryManagerContext context, ILibraryItemService service)
         {
             _context = context;
-            //_service = service;
+            _service = service;
         }
 
         // GET: LibraryItems
         public async Task<IActionResult> Index()
         {
-            //var allLibraryItems = _service.GetAllLibraryItems();
-            var libraryManagerContext = _context.LibraryItem.Include(l => l.Category).OrderBy(n => n.Category.CategoryName);
-            return View(await libraryManagerContext.ToListAsync());
+            var allLibraryItems = await _service.GetAllLibraryItems();
+            return View(allLibraryItems);
         }
+
 
         // GET: LibraryItems/Details/5
         public async Task<IActionResult> Details(int? id)
