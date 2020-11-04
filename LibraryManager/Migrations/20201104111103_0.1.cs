@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LibraryManager.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class _01 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,14 +44,14 @@ namespace LibraryManager.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(nullable: true),
-                    Author = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: false),
+                    Author = table.Column<string>(nullable: false),
                     Pages = table.Column<int>(nullable: true),
                     RunTimeMinutes = table.Column<int>(nullable: true),
                     IsBorrowable = table.Column<byte>(nullable: false),
                     Borrower = table.Column<string>(nullable: true),
                     BorrowDate = table.Column<DateTime>(nullable: true),
-                    Type = table.Column<string>(nullable: true),
+                    Type = table.Column<string>(nullable: false),
                     CategoryId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -64,6 +64,13 @@ namespace LibraryManager.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Category_CategoryName",
+                table: "Category",
+                column: "CategoryName",
+                unique: true,
+                filter: "[CategoryName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LibraryItem_CategoryId",

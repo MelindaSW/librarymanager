@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
 using System.Reflection;
 using System.IO;
 using LibraryManager.Data;
@@ -33,7 +32,7 @@ namespace LibraryManager
             services.AddDbContext<LibraryManagerContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("LibraryManagerContext")));
            
-            // Register the Swagger generator, defining 1 or more Swagger documents
+            // Register the Swagger generator, defining 1 or more Swagger documents TODO: this might not be needed if going for mvc controllers instead of rest controllers
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo

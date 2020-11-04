@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\LibraryManager",
+    "\\LibraryManager\\Controllers",
+    "\\LibraryManager\\Models",
+    "\\LibraryManager\\Properties",
+    "\\LibraryManager\\Views",
+    "\\LibraryManager\\wwwroot"
+  ],
+  "PreviewInSolutionExplorer": false
+}

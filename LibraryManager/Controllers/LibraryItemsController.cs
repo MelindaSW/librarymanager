@@ -7,22 +7,26 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LibraryManager.Data;
 using LibraryManager.Models;
+using LibraryManager.Services;
 
 namespace LibraryManager.Controllers
 {
     public class LibraryItemsController : Controller
     {
         private readonly LibraryManagerContext _context;
+        //private readonly ILibraryItemService _service;
 
-        public LibraryItemsController(LibraryManagerContext context)
+        public LibraryItemsController(LibraryManagerContext context /*ILibraryItemService service*/)
         {
             _context = context;
+            //_service = service;
         }
 
         // GET: LibraryItems
         public async Task<IActionResult> Index()
         {
-            var libraryManagerContext = _context.LibraryItem.Include(l => l.Category);
+            //var allLibraryItems = _service.GetAllLibraryItems();
+            var libraryManagerContext = _context.LibraryItem.Include(l => l.Category).OrderBy(n => n.Category.CategoryName);
             return View(await libraryManagerContext.ToListAsync());
         }
 
@@ -53,8 +57,6 @@ namespace LibraryManager.Controllers
         }
 
         // POST: LibraryItems/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Author,Pages,RunTimeMinutes,IsBorrowable,Borrower,BorrowDate,Type,CategoryId")] LibraryItem libraryItem)

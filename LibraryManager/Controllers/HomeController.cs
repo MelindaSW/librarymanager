@@ -24,21 +24,6 @@ namespace LibraryManager.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        //public string Welcome()
-        //{
-        //    return "This is the Welcome action method...";
-        //}
-
-        public string Welcome(string name, int ID = 1)
-        {
-            return HtmlEncoder.Default.Encode($"Hello {name}, ID: {ID}");
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

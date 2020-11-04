@@ -170,9 +170,6 @@ C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcor
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.csproj.CoreCompileInputs.cache
-C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\Razor\Views\Employees\Create.cshtml.g.cs
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\Razor\Views\Employees\Delete.cshtml.g.cs
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\Razor\Views\Employees\Details.cshtml.g.cs
@@ -188,3 +185,7 @@ C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcor
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\Razor\Views\LibraryItems\Details.cshtml.g.cs
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\Razor\Views\LibraryItems\Edit.cshtml.g.cs
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\Razor\Views\LibraryItems\Index.cshtml.g.cs
+C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcoreapp3.1\nunit.framework.dll
+C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.csproj.CoreCompileInputs.cache
+C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.MvcApplicationPartsAssemblyInfo.cache
