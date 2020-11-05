@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using LibraryManager.Data;
 using LibraryManager.Models;
 using LibraryManager.Services;
 
@@ -13,12 +8,10 @@ namespace LibraryManager.Controllers
 {
     public class LibraryItemsController : Controller
     {
-        private readonly LibraryManagerContext _context;
         private readonly ILibraryItemService _service;
 
-        public LibraryItemsController(LibraryManagerContext context, ILibraryItemService service)
+        public LibraryItemsController(ILibraryItemService service)
         {
-            _context = context;
             _service = service;
         }
 
@@ -50,18 +43,18 @@ namespace LibraryManager.Controllers
         // GET: LibraryItems/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id");
+            ViewData["CategoryId"] = new SelectList(_service.GetCategories(), "Id", "Id");
             return View();
         }
 
         // POST: LibraryItems/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Title,Author,Pages,RunTimeMinutes,IsBorrowable,Borrower,BorrowDate,Type,CategoryId")] LibraryItem libraryItem)
+        public async Task<IActionResult> Create([Bind("Id,Title,Author,Pages,RunTimeMinutes,IsBorrowable,Borrower,BorrowDate,Type,CategoryId")] LibraryItem libraryItem)
         {
             if (ModelState.IsValid)
             {
-                _service.CreateItem(libraryItem);   
+               await _service.CreateItem(libraryItem);   
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CategoryId"] = new SelectList(_service.GetCategories(), "Id", "Id", libraryItem.CategoryId);
@@ -76,12 +69,12 @@ namespace LibraryManager.Controllers
                 return NotFound();
             }
 
-            var libraryItem = await _context.LibraryItem.FindAsync(id);
+            var libraryItem = await _service.GetOneItem(id);
             if (libraryItem == null)
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id", libraryItem.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_service.GetCategories(), "Id", "Id", libraryItem.CategoryId);
             return View(libraryItem);
         }
 
@@ -90,7 +83,7 @@ namespace LibraryManager.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,Title,Author,Pages,RunTimeMinutes,IsBorrowable,Borrower,BorrowDate,Type,CategoryId")] LibraryItem libraryItem)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Author,Pages,RunTimeMinutes,IsBorrowable,Borrower,BorrowDate,Type,CategoryId")] LibraryItem libraryItem)
         {
             if (id != libraryItem.Id)
             {
@@ -99,17 +92,14 @@ namespace LibraryManager.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+
+                if (!_service.CheckIfItemExists(id))
                 {
-                    _service.UpdateLibraryItem(libraryItem);
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!_service.CheckIfItemExists(id))
-                    {
-                        return NotFound();
-                    }
-                }
+
+                await _service.UpdateLibraryItem(libraryItem);
+                
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CategoryId"] = new SelectList(_service.GetCategories(), "Id", "Id", libraryItem.CategoryId);
@@ -135,9 +125,9 @@ namespace LibraryManager.Controllers
         // POST: LibraryItems/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            _service.DeleteLibraryItem(id);
+            await _service.DeleteLibraryItem(id);
             return RedirectToAction(nameof(Index));
         }
 

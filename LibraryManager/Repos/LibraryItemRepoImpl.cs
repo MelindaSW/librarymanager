@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Threading.Tasks;
 using LibraryManager.Data;
@@ -32,7 +33,7 @@ namespace LibraryManager.Repos
             return libraryItem;
         }
 
-        public async void CreateItem(LibraryItem item)
+        public async Task CreateItem(LibraryItem item)
         {
             _context.Add(item);
             await _context.SaveChangesAsync();
@@ -48,17 +49,26 @@ namespace LibraryManager.Repos
             return _context.LibraryItem.Any(e => e.Id == id);
         }
 
-        public async void UpdateLibraryItem(LibraryItem item)
+        public async Task UpdateLibraryItem(LibraryItem item)
         {
-            _context.Update(item);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Update(item);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+               Console.Write(e.StackTrace);
+            }
+            
         }
 
-        public async void DeleteLibraryItem(int id)
+        public async Task DeleteLibraryItem(int id)
         {
             var libraryItem = await _context.LibraryItem.FindAsync(id);
             _context.LibraryItem.Remove(libraryItem);
             await _context.SaveChangesAsync();
         }
+
     }
 }

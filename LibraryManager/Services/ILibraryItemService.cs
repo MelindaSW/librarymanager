@@ -10,10 +10,10 @@ namespace LibraryManager.Services
     {
         Task<List<LibraryItem>> GetAllLibraryItems();
         Task<LibraryItem> GetOneItem(int? id);
-        void CreateItem(LibraryItem item);
+        Task CreateItem(LibraryItem item);
         DbSet<Category> GetCategories();
         bool CheckIfItemExists(int id);
-        void UpdateLibraryItem(LibraryItem item);
-        void DeleteLibraryItem(int id);
+        Task UpdateLibraryItem(LibraryItem item);
+        Task DeleteLibraryItem(int id);
     }
 }

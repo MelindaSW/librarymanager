@@ -35,9 +35,9 @@ namespace LibraryManager.Services
             return item;
         }
 
-        public void CreateItem(LibraryItem item)
+        public async Task CreateItem(LibraryItem item)
         {
-            _repo.CreateItem(item);
+            await _repo.CreateItem(item);
         }
 
         public DbSet<Category> GetCategories()
@@ -50,14 +50,14 @@ namespace LibraryManager.Services
             return _repo.CheckIfItemExists(id);
         }
 
-        public void UpdateLibraryItem(LibraryItem item)
+        public async Task UpdateLibraryItem(LibraryItem item)
         {
-            _repo.UpdateLibraryItem(item);
+            await _repo.UpdateLibraryItem(item);
         }
 
-        public void DeleteLibraryItem(int id)
+        public async Task DeleteLibraryItem(int id)
         {
-            _repo.DeleteLibraryItem(id);
+           await _repo.DeleteLibraryItem(id);
         }
 
         private static string GetAcronym(string s)

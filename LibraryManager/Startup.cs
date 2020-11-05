@@ -26,7 +26,7 @@ namespace LibraryManager
             services.AddDbContext<LibraryManagerContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("LibraryManagerContext")));
 
-            // Register services, for enabling dependency injection
+            // Register services for dependency injection
             services.AddTransient<ILibraryItemService, LibraryItemServiceImpl>();
             services.AddTransient<ILibraryItemRepo, LibraryItemRepoImpl>();
 
