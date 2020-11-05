@@ -29,7 +29,8 @@ namespace LibraryManager
             // Register services for dependency injection
             services.AddTransient<ILibraryItemService, LibraryItemServiceImpl>();
             services.AddTransient<ILibraryItemRepo, LibraryItemRepoImpl>();
-
+            services.AddTransient<ICategoryService, CategoryServiceImpl>();
+            services.AddTransient<ICategoryRepo, CategoryRepoImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
