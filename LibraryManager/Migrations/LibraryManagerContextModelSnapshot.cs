@@ -48,11 +48,11 @@ namespace LibraryManager.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte>("IsCEO")
-                        .HasColumnType("tinyint");
+                    b.Property<bool>("IsCEO")
+                        .HasColumnType("bit");
 
-                    b.Property<byte>("IsManager")
-                        .HasColumnType("tinyint");
+                    b.Property<bool>("IsManager")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Lastname")
                         .HasColumnType("nvarchar(max)");
@@ -88,8 +88,8 @@ namespace LibraryManager.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<byte>("IsBorrowable")
-                        .HasColumnType("tinyint");
+                    b.Property<bool>("IsBorrowable")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("Pages")
                         .HasColumnType("int");

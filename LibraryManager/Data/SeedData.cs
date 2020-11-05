@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LibraryManager.Data;
+using LibraryManager.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace LibraryManager.Models
+namespace LibraryManager.Data
 {
     public class SeedData
     {
@@ -48,7 +49,7 @@ namespace LibraryManager.Models
                     Author = "J R R Tolkien",
                     Pages = 123,
                     RunTimeMinutes = null,
-                    IsBorrowable = 1,
+                    IsBorrowable = true,
                     Borrower = null,
                     BorrowDate = null,
                     Type = "Book",
@@ -60,7 +61,7 @@ namespace LibraryManager.Models
                     Author = "Margaret Mitchell",
                     Pages = null,
                     RunTimeMinutes = 234,
-                    IsBorrowable = 1,
+                    IsBorrowable = true,
                     Borrower = null,
                     BorrowDate = null,
                     Type = "DVD",
@@ -72,7 +73,7 @@ namespace LibraryManager.Models
                     Author = "Robin Hobb",
                     Pages = null,
                     RunTimeMinutes = 345,
-                    IsBorrowable = 1,
+                    IsBorrowable = true,
                     Borrower = "",
                     BorrowDate = null,
                     Type = "Audio Book",
@@ -84,7 +85,7 @@ namespace LibraryManager.Models
                     Author = "Mary Merry",
                     Pages = 123,
                     RunTimeMinutes = null,
-                    IsBorrowable = 0, // should always be false - Can only be read at the library
+                    IsBorrowable = false, // should always be false - Can only be read at the library
                     Borrower = "",
                     BorrowDate = null,
                     Type = "Reference Book",

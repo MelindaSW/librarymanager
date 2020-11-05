@@ -12,8 +12,8 @@ namespace LibraryManager.Models
         public string FirstName { get; set; }
         public string Lastname { get; set; }
         public double Salary { get; set; }
-        public byte IsCEO { get; set; }
-        public byte IsManager { get; set; }
+        public bool IsCEO { get; set; }
+        public bool IsManager { get; set; }
         public int? ManagerId { get; set; }
     }
 }

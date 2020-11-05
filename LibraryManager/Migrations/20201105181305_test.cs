@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LibraryManager.Migrations
 {
-    public partial class _01 : Migration
+    public partial class test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,8 +29,8 @@ namespace LibraryManager.Migrations
                     FirstName = table.Column<string>(nullable: true),
                     Lastname = table.Column<string>(nullable: true),
                     Salary = table.Column<double>(nullable: false),
-                    IsCEO = table.Column<byte>(nullable: false),
-                    IsManager = table.Column<byte>(nullable: false),
+                    IsCEO = table.Column<bool>(nullable: false),
+                    IsManager = table.Column<bool>(nullable: false),
                     ManagerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -48,7 +48,7 @@ namespace LibraryManager.Migrations
                     Author = table.Column<string>(nullable: false),
                     Pages = table.Column<int>(nullable: true),
                     RunTimeMinutes = table.Column<int>(nullable: true),
-                    IsBorrowable = table.Column<byte>(nullable: false),
+                    IsBorrowable = table.Column<bool>(nullable: false),
                     Borrower = table.Column<string>(nullable: true),
                     BorrowDate = table.Column<DateTime>(nullable: true),
                     Type = table.Column<string>(nullable: false),

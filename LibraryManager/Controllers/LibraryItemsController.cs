@@ -29,7 +29,6 @@ namespace LibraryManager.Controllers
             return View(allLibraryItems);
         }
 
-
         // GET: LibraryItems/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -38,9 +37,8 @@ namespace LibraryManager.Controllers
                 return NotFound();
             }
 
-            var libraryItem = await _context.LibraryItem
-                .Include(l => l.Category)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var libraryItem = await _service.GetOneItem(id);
+
             if (libraryItem == null)
             {
                 return NotFound();
@@ -59,15 +57,14 @@ namespace LibraryManager.Controllers
         // POST: LibraryItems/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Author,Pages,RunTimeMinutes,IsBorrowable,Borrower,BorrowDate,Type,CategoryId")] LibraryItem libraryItem)
+        public IActionResult Create([Bind("Id,Title,Author,Pages,RunTimeMinutes,IsBorrowable,Borrower,BorrowDate,Type,CategoryId")] LibraryItem libraryItem)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(libraryItem);
-                await _context.SaveChangesAsync();
+                _service.CreateItem(libraryItem);   
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id", libraryItem.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_service.GetCategories(), "Id", "Id", libraryItem.CategoryId);
             return View(libraryItem);
         }
 
@@ -93,7 +90,7 @@ namespace LibraryManager.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Author,Pages,RunTimeMinutes,IsBorrowable,Borrower,BorrowDate,Type,CategoryId")] LibraryItem libraryItem)
+        public IActionResult Edit(int id, [Bind("Id,Title,Author,Pages,RunTimeMinutes,IsBorrowable,Borrower,BorrowDate,Type,CategoryId")] LibraryItem libraryItem)
         {
             if (id != libraryItem.Id)
             {
@@ -104,23 +101,18 @@ namespace LibraryManager.Controllers
             {
                 try
                 {
-                    _context.Update(libraryItem);
-                    await _context.SaveChangesAsync();
+                    _service.UpdateLibraryItem(libraryItem);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LibraryItemExists(libraryItem.Id))
+                    if (!_service.CheckIfItemExists(id))
                     {
                         return NotFound();
-                    }
-                    else
-                    {
-                        throw;
                     }
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Category, "Id", "Id", libraryItem.CategoryId);
+            ViewData["CategoryId"] = new SelectList(_service.GetCategories(), "Id", "Id", libraryItem.CategoryId);
             return View(libraryItem);
         }
 
@@ -131,10 +123,7 @@ namespace LibraryManager.Controllers
             {
                 return NotFound();
             }
-
-            var libraryItem = await _context.LibraryItem
-                .Include(l => l.Category)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var libraryItem = await _service.GetOneItem(id);
             if (libraryItem == null)
             {
                 return NotFound();
@@ -146,17 +135,11 @@ namespace LibraryManager.Controllers
         // POST: LibraryItems/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            var libraryItem = await _context.LibraryItem.FindAsync(id);
-            _context.LibraryItem.Remove(libraryItem);
-            await _context.SaveChangesAsync();
+            _service.DeleteLibraryItem(id);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool LibraryItemExists(int id)
-        {
-            return _context.LibraryItem.Any(e => e.Id == id);
-        }
     }
 }

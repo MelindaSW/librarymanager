@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using LibraryManager.Models;
 using LibraryManager.Repos;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManager.Services
 {
@@ -28,8 +29,38 @@ namespace LibraryManager.Services
             return libraryItems;
         }
 
+        public async Task<LibraryItem> GetOneItem(int? id)
+        {
+            var item = await _repo.GetOneItem(id);
+            return item;
+        }
 
-        private string GetAcronym(string s)
+        public void CreateItem(LibraryItem item)
+        {
+            _repo.CreateItem(item);
+        }
+
+        public DbSet<Category> GetCategories()
+        {
+            return _repo.GetCategories();
+        }
+
+        public bool CheckIfItemExists(int id)
+        {
+            return _repo.CheckIfItemExists(id);
+        }
+
+        public void UpdateLibraryItem(LibraryItem item)
+        {
+            _repo.UpdateLibraryItem(item);
+        }
+
+        public void DeleteLibraryItem(int id)
+        {
+            _repo.DeleteLibraryItem(id);
+        }
+
+        private static string GetAcronym(string s)
         {
             var splitString = s.Split(" ");
             return splitString.Aggregate("", (current, word) => current + char.ToUpper(word[0]));

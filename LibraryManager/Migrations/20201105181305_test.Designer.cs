@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManager.Migrations
 {
     [DbContext(typeof(LibraryManagerContext))]
-    [Migration("20201104111103_0.1")]
-    partial class _01
+    [Migration("20201105181305_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,11 +50,11 @@ namespace LibraryManager.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte>("IsCEO")
-                        .HasColumnType("tinyint");
+                    b.Property<bool>("IsCEO")
+                        .HasColumnType("bit");
 
-                    b.Property<byte>("IsManager")
-                        .HasColumnType("tinyint");
+                    b.Property<bool>("IsManager")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Lastname")
                         .HasColumnType("nvarchar(max)");
@@ -90,8 +90,8 @@ namespace LibraryManager.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<byte>("IsBorrowable")
-                        .HasColumnType("tinyint");
+                    b.Property<bool>("IsBorrowable")
+                        .HasColumnType("bit");
 
                     b.Property<int?>("Pages")
                         .HasColumnType("int");

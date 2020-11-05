@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using LibraryManager.Models;
+﻿using LibraryManager.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManager.Data

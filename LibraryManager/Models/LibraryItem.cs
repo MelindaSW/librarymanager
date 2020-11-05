@@ -25,7 +25,7 @@ namespace LibraryManager.Models
         
         [Display(Name = "Is Borrowable")]
         [Required]
-        public byte IsBorrowable { get; set; }
+        public bool IsBorrowable { get; set; }
 
         public string Borrower { get; set; }
         
