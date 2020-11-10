@@ -33,10 +33,6 @@ C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcor
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.pdb
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.genruntimeconfig.cache
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.csproj.CopyComplete
-C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
-C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
@@ -187,5 +183,4 @@ C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcor
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\Razor\Views\LibraryItems\Index.cshtml.g.cs
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\bin\Debug\netcoreapp3.1\nunit.framework.dll
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.csproj.CoreCompileInputs.cache
-C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\sands\Documents\Projects\Librarymanager\LibraryManager\obj\Debug\netcoreapp3.1\LibraryManager.MvcApplicationPartsAssemblyInfo.cache

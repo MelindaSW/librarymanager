@@ -117,7 +117,7 @@ namespace LibraryManager.Migrations
                     b.HasOne("LibraryManager.Models.Category", "Category")
                         .WithMany("LibraryItems")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LibraryManager.Data;
 using LibraryManager.Models;
+using LibraryManager.Services;
 
 namespace LibraryManager.Controllers
 {
     public class EmployeesController : Controller
     {
         private readonly LibraryManagerContext _context;
+        private readonly IEmployeeService _service;
 
-        public EmployeesController(LibraryManagerContext context)
+        public EmployeesController(LibraryManagerContext context, IEmployeeService service)
         {
             _context = context;
+            _service = service;
         }
 
         // GET: Employees

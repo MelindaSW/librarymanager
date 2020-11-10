@@ -31,6 +31,8 @@ namespace LibraryManager
             services.AddTransient<ILibraryItemRepo, LibraryItemRepoImpl>();
             services.AddTransient<ICategoryService, CategoryServiceImpl>();
             services.AddTransient<ICategoryRepo, CategoryRepoImpl>();
+            services.AddTransient<IEmployeeService, EmployeeServiceImpl>();
+            services.AddTransient<IEmployeeRepo, EmployeeRepoImpl>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

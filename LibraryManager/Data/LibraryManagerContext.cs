@@ -16,8 +16,13 @@ namespace LibraryManager.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>()
-                .HasIndex(p => new { p.CategoryName })
+                .HasIndex(p => new {p.CategoryName})
                 .IsUnique();
+
+            modelBuilder.Entity<Category>()
+                .HasMany(i => i.LibraryItems)
+                .WithOne(c => c.Category)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
