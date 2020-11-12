@@ -2,40 +2,54 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LibraryManager.Data;
 using LibraryManager.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace LibraryManager.Repos
 {
     public class EmployeeRepoImpl : IEmployeeRepo
     {
-        public Task<List<Employee>> GetAllEmployees()
+        private readonly LibraryManagerContext _context;
+
+        public EmployeeRepoImpl(LibraryManagerContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
         }
 
-        public Task<Employee> GetOneEmployee(int? id)
+        public async Task<List<Employee>> GetAllEmployees()
         {
-            throw new NotImplementedException();
+            return await _context.Employees.ToListAsync();
         }
 
-        public Task CreateEmployee(Employee employee)
+        public async Task<Employee> GetOneEmployee(int? id)
         {
-            throw new NotImplementedException();
+            return await _context.Employees
+                .FirstOrDefaultAsync(m => m.Id == id);
         }
 
-        public Task UpdateEmployee(Employee employee)
+        public async Task CreateEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            _context.Add(employee);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateEmployee(Employee employee)
+        {
+            _context.Update(employee);
+            await _context.SaveChangesAsync();
         }
 
         public bool CheckIfEmployeeExists(int id)
         {
-            throw new NotImplementedException();
+            return _context.Employees.Any(e => e.Id == id);
         }
 
-        public Task DeleteEmployee(int id)
+        public async Task DeleteEmployee(int id)
         {
-            throw new NotImplementedException();
+            var employee = await _context.Employees.FindAsync(id);
+            _context.Employees.Remove(employee);
+            await _context.SaveChangesAsync();
         }
     }
 }

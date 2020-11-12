@@ -16,34 +16,34 @@ namespace LibraryManager.Services
             _repo = repo;
         }
 
-        public Task<List<Employee>> GetAllEmployees()
+        public async Task<List<Employee>> GetAllEmployees()
         {
-            throw new NotImplementedException();
+            return await _repo.GetAllEmployees();
         }
 
-        public Task<Employee> GetOneEmployee(int? id)
+        public async Task<Employee> GetOneEmployee(int? id)
         {
-            throw new NotImplementedException();
+            return await _repo.GetOneEmployee(id);
         }
 
-        public Task CreateEmployee(Employee employee)
+        public async Task CreateEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            await _repo.CreateEmployee(employee);
         }
 
-        public Task UpdateEmployee(Employee employee)
+        public async Task UpdateEmployee(Employee employee)
         {
-            throw new NotImplementedException();
+            await _repo.UpdateEmployee(employee);
         }
 
         public bool CheckIfEmployeeExists(int id)
         {
-            throw new NotImplementedException();
+            return _repo.CheckIfEmployeeExists(id);
         }
 
-        public Task DeleteEmployee(int id)
+        public async Task DeleteEmployee(int id)
         {
-            throw new NotImplementedException();
+            await _repo.DeleteEmployee(id);
         }
     }
 }

@@ -13,31 +13,28 @@ namespace LibraryManager.Controllers
 {
     public class EmployeesController : Controller
     {
-        private readonly LibraryManagerContext _context;
         private readonly IEmployeeService _service;
 
-        public EmployeesController(LibraryManagerContext context, IEmployeeService service)
+        public EmployeesController (IEmployeeService service)
         {
-            _context = context;
             _service = service;
         }
 
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Employees.ToListAsync());
+            return View(await _service.GetAllEmployees());
         }
 
         // GET: Employees/Details/5
-        public async Task<IActionResult> Details(long? id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var employee = await _context.Employees
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var employee = await _service.GetOneEmployee(id);
             if (employee == null)
             {
                 return NotFound();
@@ -61,22 +58,21 @@ namespace LibraryManager.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(employee);
-                await _context.SaveChangesAsync();
+                await _service.CreateEmployee(employee);
                 return RedirectToAction(nameof(Index));
             }
             return View(employee);
         }
 
         // GET: Employees/Edit/5
-        public async Task<IActionResult> Edit(long? id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var employee = await _context.Employees.FindAsync(id);
+            var employee = await _service.GetOneEmployee(id);
             if (employee == null)
             {
                 return NotFound();
@@ -89,46 +85,42 @@ namespace LibraryManager.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(long id, [Bind("Id,FirstName,Lastname,Salary,IsCEO,IsManager,ManagerId")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,Lastname,Salary,IsCEO,IsManager,ManagerId")] Employee employee)
         {
             if (id != employee.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(employee);
+            try
             {
-                try
-                {
-                    _context.Update(employee);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!EmployeeExists(employee.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                await _service.UpdateEmployee(employee);
             }
-            return View(employee);
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!EmployeeExists(employee.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Employees/Delete/5
-        public async Task<IActionResult> Delete(long? id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var employee = await _context.Employees
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var employee = await _service.GetOneEmployee(id);
+
             if (employee == null)
             {
                 return NotFound();
@@ -140,17 +132,15 @@ namespace LibraryManager.Controllers
         // POST: Employees/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(long id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var employee = await _context.Employees.FindAsync(id);
-            _context.Employees.Remove(employee);
-            await _context.SaveChangesAsync();
+            await _service.DeleteEmployee(id);
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EmployeeExists(long id)
+        private bool EmployeeExists(int id)
         {
-            return _context.Employees.Any(e => e.Id == id);
+            return _service.CheckIfEmployeeExists(id);
         }
     }
 }

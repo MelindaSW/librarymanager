@@ -8,7 +8,7 @@ namespace LibraryManager.Models
 {
     public class Employee
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string Lastname { get; set; }
         public double Salary { get; set; }

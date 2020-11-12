@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryManager.Migrations
 {
     [DbContext(typeof(LibraryManagerContext))]
-    [Migration("20201110160657_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20201112111058_A")]
+    partial class A
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,9 +42,9 @@ namespace LibraryManager.Migrations
 
             modelBuilder.Entity("LibraryManager.Models.Employee", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("FirstName")
